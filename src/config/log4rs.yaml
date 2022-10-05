@@ -1,0 +1,44 @@
+refresh_rate: 30 seconds
+
+appenders:
+  stdout:
+    kind: console
+  user_interface:
+    kind: file
+    path: "log/user_interface.log"
+    encoder:
+      kind: json
+  core:
+    kind: file
+    path: "log/core.log"
+    encoder:
+      kind: json
+  infrastructure:
+    kind: file
+    path: "log/infrastructure.log"
+    encoder:
+      kind: json
+  stderr:
+    kind: file
+    path: "log/stderr.log"
+    encoder:
+      kind: json
+ 
+root:
+  level: info
+  appenders:
+    - stdout
+
+loggers:
+  key_maker::user_interface:
+    level: warn
+    appenders:
+    - user_interface
+  key_maker::core:
+    level: info
+    appenders:
+    - core
+  key_maker::infrastructure:
+    level: warn
+    appenders:
+    - infrastructure
